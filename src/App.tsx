@@ -1,5 +1,6 @@
 import './App.scss'
 import Container from './layouts/Container'
+import { Footer } from './layouts/Footer'
 import Header from './layouts/Header'
 import Sider from './layouts/Sider'
 
@@ -11,6 +12,13 @@ function App() {
         <div className="content-wrapper">
           <div className="content-view">
             <Header />
+            
+            <Footer />
+          </div>
+
+          <div className="gradient-bg">
+            <div className="gradient-top"></div>
+            <div className="gradient-bottom"></div>
           </div>
         </div>
       </Container>
