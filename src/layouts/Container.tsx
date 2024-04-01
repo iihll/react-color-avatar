@@ -1,29 +1,32 @@
-'use client'
-import { type PropsWithChildren, useEffect } from 'react'
-import useSider from '@/hooks/useSider'
-import { SCREEN } from '@/utils/constant'
+import useSider from "@/hooks/useSider";
+import { SCREEN } from "@/utils/constant";
+import { PropsWithChildren, useEffect } from "react";
+import './Container.scss'
 
-export default function Container({ children }: PropsWithChildren) {
-  const { isCollapsed, openSider, closeSider } = useSider()
+export default function Container(props: PropsWithChildren) {
+const { isCollapsed, openSider, closeSider } = useSider()
+
   function handleWindowResize() {
-    if (window.innerWidth <= SCREEN.lg)
+    if (window.innerWidth <= SCREEN.lg) {
       closeSider()
-    else
+    } else {
       openSider()
+    }
   }
+
   useEffect(() => {
     void (function () {
       const throttle = function (
         type: string,
         customEventName: string,
-        obj: Window,
+        obj: Window
       ) {
         obj = obj || window
         let running = false
         const func = () => {
-          if (running)
+          if (running) {
             return
-
+          }
           running = true
           requestAnimationFrame(() => {
             obj.dispatchEvent(new CustomEvent(customEventName))
@@ -34,7 +37,7 @@ export default function Container({ children }: PropsWithChildren) {
       }
       throttle('resize', 'optimizedResize', window)
     })()
-
+  
     window.addEventListener('optimizedResize', handleWindowResize)
 
     return () => {
@@ -43,8 +46,8 @@ export default function Container({ children }: PropsWithChildren) {
   }, [])
 
   return (
-    <section className={isCollapsed ? 'h-full pr-0' : 'h-full pr-80'}>
-      {children}
+    <section className={isCollapsed ? 'container full' : 'container'}>
+      {props.children}
     </section>
   )
 }

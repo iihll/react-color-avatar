@@ -6,5 +6,6 @@ export function recordEvent(
     value?: number
   }
 ) {
-  window?.gtag('event', action, params)
+  // window?.gtag('event', action, params)
+  console.log('action, params', action, params)
 }

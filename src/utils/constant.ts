@@ -1,8 +1,10 @@
+import type { AvatarOption, AvatarSettings } from '@/types'
+
 import {
   BeardShape,
   ClothesShape,
-  EarShape,
   EarringsShape,
+  EarShape,
   EyebrowsShape,
   EyesShape,
   FaceShape,
@@ -14,7 +16,6 @@ import {
   WidgetType,
   WrapperShape,
 } from '../enums'
-import type { AvatarOption, AvatarSettings } from '@/types'
 
 export const AVATAR_LAYER: Readonly<{
   [key in `${WidgetType}`]: { zIndex: number }
