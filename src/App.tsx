@@ -12,6 +12,10 @@ function App() {
         <div className="content-wrapper">
           <div className="content-view">
             <Header />
+
+            <div className="playground">
+              <div className="avatar-wrapper"></div>
+            </div>
             
             <Footer />
           </div>

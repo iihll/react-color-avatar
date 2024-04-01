@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "canvas-confetti": "^1.9.2",
+    "classnames": "^2.5.1",
     "i18next": "^23.10.1",
     "perfect-scrollbar": "^1.5.5",
     "react": "^18.2.0",
