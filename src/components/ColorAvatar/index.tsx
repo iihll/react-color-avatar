@@ -1,25 +1,35 @@
 import './index.scss'
 import classnames from 'classnames'
 import { WidgetType, WrapperShape } from '@/enums'
-import type { AvatarOption } from '@/types'
+// import type { AvatarOption } from '@/types'
 import { getRandomAvatarOption } from '@/utils'
-import { useEffect, useState } from 'react'
+import { MutableRefObject, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { AVATAR_LAYER, NONE, SHAPE_STYLE_SET } from '@/utils/constant'
 import { widgetData } from '@/utils/dynamic-data'
 
 import Background from './widgets/Background'
-import Border from './widgets/Border.vue'
+import Border from './widgets/Border'
+import { AvatarOption } from '@/types'
 
 interface Props {
   option: AvatarOption
   size?: number
 }
 
-export default function ColorAvatar(props = {
+export interface ColorAvatarRef {
+  avatarRef: MutableRefObject<HTMLDivElement>
+}
+
+const ColorAvatar = forwardRef<ColorAvatarRef, Props>(function ColorAvatar(props = {
   option: getRandomAvatarOption(),
   size: 280,
-}) {
+}, ref) {
   const [svgContent, setSvgContent] = useState('')
+  const avatarRef = useRef<HTMLDivElement>()
+
+  useImperativeHandle(ref, () => ({
+    avatarRef: avatarRef
+  }))
 
   function getWrapperShapeClassName() {
     const { option: avatarOption } = props
@@ -114,10 +124,17 @@ export default function ColorAvatar(props = {
   }, [props.option])
 
   return (
-    <div className={classnames('color-avatar', getWrapperShapeClassName())} style={getWrapperShapeStyle()}>
+    <div ref={avatarRef} className={classnames('color-avatar', getWrapperShapeClassName())} style={getWrapperShapeStyle()}>
       <Background color={props.option.background.color} />
 
       <div className="avatar-payload" dangerouslySetInnerHTML={{ __html: svgContent }}></div>
+
+      <Border
+        color={props.option.background.borderColor}
+        radius={getWrapperShapeStyle().borderRadius}
+      />
     </div>
   )
-}
+})
+
+export default ColorAvatar

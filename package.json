@@ -13,7 +13,9 @@
     "@reduxjs/toolkit": "^2.2.3",
     "canvas-confetti": "^1.9.2",
     "classnames": "^2.5.1",
+    "html2canvas": "^1.4.1",
     "i18next": "^23.10.1",
+    "object-hash": "^3.0.0",
     "perfect-scrollbar": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@iihll/eslint-config": "^0.0.5",
     "@types/node": "^20.12.2",
+    "@types/object-hash": "^3.0.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
