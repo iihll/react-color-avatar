@@ -16,6 +16,7 @@ import { DOWNLOAD_DELAY, NOT_COMPATIBLE_AGENTS, TRIGGER_PROBABILITY } from './ut
 import { getRandomAvatarOption, getSpecialAvatarOption, showConfetti } from './utils'
 import { name as appName } from '../package.json'
 import { AvatarOption } from './types'
+import Configurator from './components/Configurator'
 
 function App() {
   const [avatarOption, setAvatarOption] = useAvatarOption()
@@ -211,7 +212,9 @@ function App() {
         </div>
       </Container>
 
-      <Sider>1</Sider>
+      <Sider>
+        <Configurator />
+      </Sider>
     </main>
   )
 }
