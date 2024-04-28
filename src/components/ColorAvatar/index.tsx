@@ -12,6 +12,7 @@ import Border from './widgets/Border'
 import { AvatarOption } from '@/types'
 
 interface Props {
+  id?: string
   option: AvatarOption
   size?: number
 }

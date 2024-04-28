@@ -19,6 +19,8 @@ import { AvatarOption } from './types'
 import Configurator from './components/Configurator'
 import CodeModal from './components/CodeModal'
 import { DownloadModal } from './components/DownloadModal'
+import BatchDownloadModal from './components/BatchDownloadModal'
+import { ConfettiCanvas } from './components/ConfettiCanvas'
 
 function App() {
   const [avatarOption, setAvatarOption] = useAvatarOption()
@@ -218,12 +220,24 @@ function App() {
             />
           </div>
 
+          <ConfettiCanvas />
+
           <div className="gradient-bg">
             <div className="gradient-top"></div>
             <div className="gradient-bottom"></div>
           </div>
         </div>
       </Container>
+
+      <BatchDownloadModal
+        visible={avatarListVisible}
+        avatarList={avatarList}
+        regenerate={generateMultiple}
+        close={() => {
+          setAvatarListVisible(false)
+          setAvatarList([])
+        }}
+      />
 
       <Sider>
         <Configurator />
