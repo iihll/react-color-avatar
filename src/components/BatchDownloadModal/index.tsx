@@ -84,7 +84,7 @@ export default function BatchDownloadModal(props: BatchDownloadModalProps) {
 
   return (
     <ModalWrapper visible={props.visible} close={() => { props.close() }}>
-      <div className="container">
+      <div className="batch-download-container">
         <div className="top-bar">
           <div>{ t('text.downloadMultipleTip') }</div>
           <div className="right">
