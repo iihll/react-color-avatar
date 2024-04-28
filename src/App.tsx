@@ -208,10 +208,14 @@ function App() {
 
             <CodeModal visible={codeVisible} close={() => { setCodeVisible(false) }} />
 
-            <DownloadModal visible={downloadModalVisible} imageUrl={imageDataURL} close={() => {
-              setDownloadModalVisible(false)
-              setImageDataURL('')
-            }} />
+            <DownloadModal 
+              visible={downloadModalVisible}
+              imageUrl={imageDataURL}
+              close={() => {
+                setDownloadModalVisible(false)
+                setImageDataURL('')
+              }}
+            />
           </div>
 
           <div className="gradient-bg">

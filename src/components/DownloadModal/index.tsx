@@ -5,28 +5,29 @@ export function DownloadModal(props: { visible?: boolean; imageUrl: string; clos
   const { t } = useTranslation()
 
   return (
-    <div
-    v-if="props.visible"
-    className="download-modal-wrapper"
-    onClick={() => { props.close() }}
-  >
-    <div className="download-modal" onClick={(event) => { event.stopPropagation() }}>
-      <div className="modal-body">
-        <div className="avatar-preview">
-          <img
-            alt="vue-color-avatar"
-            src={props.imageUrl}
-            className="avatar-img"
-          />
+    <>
+      {props.visible ? <div
+        className="download-modal-wrapper"
+        onClick={() => { props.close() }}
+      >
+        <div className="download-modal" onClick={(event) => { event.stopPropagation() }}>
+          <div className="modal-body">
+            <div className="avatar-preview">
+              <img
+                alt="vue-color-avatar"
+                src={props.imageUrl}
+                className="avatar-img"
+              />
+            </div>
+
+            <p className="tip">{ t('text.downloadTip') } 🥳</p>
+          </div>
+
+          <button type="button" className="close-btn" onClick={() => { props.close() }}>
+            { t('action.close') }
+          </button>
         </div>
-
-        <p className="tip">{ t('text.downloadTip') } 🥳</p>
-      </div>
-
-      <button type="button" className="close-btn" onClick={() => { props.close() }}>
-        { t('action.close') }
-      </button>
-    </div>
-  </div>
+      </div> : null}
+    </>
   )
 }

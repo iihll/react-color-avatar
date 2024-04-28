@@ -10,8 +10,8 @@ export default function ModalWrapper(props: PropsWithChildren<{ visible?: boolea
   }
 
   return (
-    <Transition in={props.visible} timeout={0}>
-      {props.visible ? <div className="modal" onClick={onClick}>{props.children}</div> : null}
+    <Transition in={props.visible} timeout={300}>
+      {props.visible ? <div className="modal" onClick={onClick}>{props.children}</div> : <></>}
     </Transition>
   )
 }
