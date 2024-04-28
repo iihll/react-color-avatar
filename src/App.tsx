@@ -17,6 +17,8 @@ import { getRandomAvatarOption, getSpecialAvatarOption, showConfetti } from './u
 import { name as appName } from '../package.json'
 import { AvatarOption } from './types'
 import Configurator from './components/Configurator'
+import CodeModal from './components/CodeModal'
+import { DownloadModal } from './components/DownloadModal'
 
 function App() {
   const [avatarOption, setAvatarOption] = useAvatarOption()
@@ -98,7 +100,7 @@ function App() {
   
       if (avatarEle) {
         const html2canvas = (await import('html2canvas')).default
-        const canvas = await html2canvas(avatarEle, {
+        const canvas = await html2canvas(avatarEle.current, {
           backgroundColor: null,
         })
         const dataURL = canvas.toDataURL()
@@ -203,6 +205,13 @@ function App() {
             </div>
             
             <Footer />
+
+            <CodeModal visible={codeVisible} close={() => { setCodeVisible(false) }} />
+
+            <DownloadModal visible={downloadModalVisible} imageUrl={imageDataURL} close={() => {
+              setDownloadModalVisible(false)
+              setImageDataURL('')
+            }} />
           </div>
 
           <div className="gradient-bg">
