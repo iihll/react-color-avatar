@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { WidgetType, WrapperShape } from '@/enums'
 // import type { AvatarOption } from '@/types'
 import { getRandomAvatarOption } from '@/utils'
-import { MutableRefObject, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { MutableRefObject, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { AVATAR_LAYER, NONE, SHAPE_STYLE_SET } from '@/utils/constant'
 import { widgetData } from '@/utils/dynamic-data'
 
@@ -51,7 +51,7 @@ const ColorAvatar = forwardRef<ColorAvatarRef, Props>(function ColorAvatar(props
     return SHAPE_STYLE_SET[avatarOption.wrapperShape!]
   }
 
-  async function draw() {
+  const draw = useCallback(async () => {
     const { option: avatarOption } = props
 
     const sortedList = Object.entries(avatarOption.widgets).sort(
@@ -119,11 +119,11 @@ const ColorAvatar = forwardRef<ColorAvatarRef, Props>(function ColorAvatar(props
       </g>
     </svg>
   `)
-  }
+  }, [props]) 
 
   useEffect(() => {
     draw()
-  }, [props.option])
+  }, [draw, props.option])
 
   return (
     <div 

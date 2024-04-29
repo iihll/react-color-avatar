@@ -8,6 +8,8 @@ import IconClose from '@/assets/icons/icon-close.svg'
 import PerfectScrollbar from '../PerfectScrollbar';
 import classnames from 'classnames';
 
+let clipboard: ClipboardJS
+
 export default function CodeModal(props: { visible?: boolean; close?: () => void }) {
   const { t } = useTranslation()
   const [avatarOption] = useAvatarOption()
@@ -19,7 +21,6 @@ export default function CodeModal(props: { visible?: boolean; close?: () => void
     }
   }, [codeJSON])
   const [copied, setCopied] = useState(false)
-  let clipboard: ClipboardJS
   const initClipboard = async () => {
     const { default: ClipboardJS } = await import('clipboard')
     clipboard = new ClipboardJS('#copy-code-btn')
@@ -62,12 +63,12 @@ export default function CodeModal(props: { visible?: boolean; close?: () => void
           </PerfectScrollbar>
 
           <button
-          id="copy-code-btn"
-          className={classnames('copy-btn', { copied })}
-          data-clipboard-text={codeJSON}
-        >
-          { copied ? t('action.copied') : t('action.copyCode') }
-        </button>
+            id="copy-code-btn"
+            className={classnames('copy-btn', { copied })}
+            data-clipboard-text={codeJSON}
+          >
+            { copied ? t('action.copied') : t('action.copyCode') }
+          </button>
         </div>
       </div>
     </ModalWrapper>
