@@ -15,6 +15,7 @@ interface Props {
   id?: string
   option: AvatarOption
   size?: number
+  flipped?: boolean
 }
 
 export interface ColorAvatarRef {
@@ -125,7 +126,11 @@ const ColorAvatar = forwardRef<ColorAvatarRef, Props>(function ColorAvatar(props
   }, [props.option])
 
   return (
-    <div ref={avatarRef} className={classnames('color-avatar', getWrapperShapeClassName())} style={getWrapperShapeStyle()}>
+    <div 
+      ref={avatarRef}
+      className={classnames('color-avatar', getWrapperShapeClassName())}
+      style={{ ...getWrapperShapeStyle(), transform: `rotateY(${props.flipped ? -180 : 0}deg)` }}
+    >
       <Background color={props.option.background.color} />
 
       <div className="avatar-payload" dangerouslySetInnerHTML={{ __html: svgContent }}></div>

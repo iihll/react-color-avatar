@@ -172,7 +172,7 @@ function App() {
 
             <div className="playground">
               <div className="avatar-wrapper">
-                <ColorAvatar ref={colorAvatarRef} option={avatarOption} size={280} />
+                <ColorAvatar ref={colorAvatarRef} option={avatarOption} size={280} flipped={flipped} />
               </div>
 
               <ActionBar action={handleAction} />
